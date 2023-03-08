@@ -10,8 +10,13 @@ export function getBooks() {
     }
     return result;
 }
+
 export function Book(props) {
-    return <div >
+    return <div key={props.id}>
+        <img src="https://media.s-bol.com/Y01DzmKyln1O/xnzqmJP/548x840.jpg" style={{
+            height: "100%",
+            width: "100%",
+        }} />
         <h3>{props.title}</h3>
         <h5>{props.count}</h5>
     </div>;

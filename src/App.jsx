@@ -5,7 +5,7 @@ import { Book, getBooks } from './components/book'
 let initialBooks = getBooks();
 
 function App() {
-
+    
     const [books, setBooks] = useState(initialBooks);
 
     function updateBooks() {
@@ -29,14 +29,16 @@ function App() {
     return (
         <div className="App">
             <button onClick={() => updateBooks()}>Update</button>
-            {console.log(books)}
-            {
-                books.map(book => {
-                    return <Book key={book.id} title={book.title} count={book.counter}></Book>
-                })
-            }
+            <div className="book-container">
+                {
+                    books.map(book => {
+                        return <div className='single-book'>
+                            <Book key={book.id} id={book.id} title={book.title} count={book.counter}></Book>
+                        </div>
+                    })
+                }
+            </div>
         </div >
     )
 }
-
 export default App
