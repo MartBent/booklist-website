@@ -6,7 +6,7 @@ export function getBooks() {
             coversourceurl: "https://media.s-bol.com/Y01DzmKyln1O/xnzqmJP/548x840.jpg",
             title: "Book " + i,
             pageAmount: 230,
-            pagesRead: 150,
+            pagesRead: 23,
         };
         book.progress = Math.round(book.pagesRead / book.pageAmount * 100);
         result[i] = book;
