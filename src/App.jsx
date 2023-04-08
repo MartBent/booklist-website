@@ -2,29 +2,12 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { Book, getBooks } from './components/book'
 
-let initialBooks = getBooks();
-
 function App() {
 
-    const [books, setBooks] = useState(initialBooks);
-
-    function updateBooks() {
-        const newBooks = books.map(book => {
-            if (book.counter == 0) {
-                return book;
-            }
-            return {
-                id: book.id,
-                title: book.title,
-                progress: book.progress,
-                coversourceurl: book.coversourceurl
-            }
-        });
-        setBooks(newBooks);
-    };
+    const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        updateBooks();
+        getBooks().then(response => setBooks(response.data));
     }, []);
 
     return (
@@ -33,12 +16,14 @@ function App() {
                 {
                     books.map(book => {
                         return <div className='single-book'>
-                            <Book key={book.id} id={book.id} title={book.title} progess={book.progress} coversourceurl={book.coversourceurl}></Book>
+                            <Book key={book.id} id={book.id} title={book.title} progess={book.progress} cover_img_src={book.cover_img_src}></Book>
                         </div>
                     })
                 }
             </div>
-            <button onClick={() => updateBooks()}>Update</button>
+            <button onClick={() => {
+                getBooks().then(response => setBooks(response.data))
+            }}>Update</button>
         </div >
     )
 }
