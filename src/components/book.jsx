@@ -1,7 +1,7 @@
 import axios from 'redaxios';
 
 export function getBooks() {
-    return axios.get('http://192.168.178.71:9090/books');
+    return axios.get('https://api.martbent.com');
 }
 
 export function Book(props) {
