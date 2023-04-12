@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { Book, getBooks } from './components/book'
+import { Book, get_books, delete_book, add_book } from './components/book'
 
 function App() {
 
     const [books, setBooks] = useState([]);
 
+    function update_books() {
+        get_books().then(response => setBooks(response.data));
+    }
+
     useEffect(() => {
-        getBooks().then(response => setBooks(response.data));
+        update_books();
     }, []);
 
     return (
@@ -16,14 +20,15 @@ function App() {
                 {
                     books.map(book => {
                         return <div className='single-book'>
-                            <Book key={book.id} id={book.id} title={book.title} progess={book.progress} cover_img_src={book.cover_img_src}></Book>
+                            <Book key={book.id} book={book}></Book>
+                            <button onClick={() => { delete_book(book.id).then(() => { update_books() }) }}>Delete</button>
                         </div>
                     })
                 }
             </div>
             <button onClick={() => {
-                getBooks().then(response => setBooks(response.data))
-            }}>Update</button>
+                add_book().then(() => { update_books() })
+            }}>Add</button>
         </div >
     )
 }
