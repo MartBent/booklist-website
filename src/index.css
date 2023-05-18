@@ -26,34 +26,24 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
-  min-width: 320px;
   min-height: 100vh;
+  background-color: #f0f0f0;
+}
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 0;
+  margin-bottom: 0.5em;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
@@ -64,7 +54,35 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+.image {
+  width: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+  .book {
+    width: 90%;
   }
+}
+
+button {
+  margin: 10px;
+  padding: 1em 1.5em;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.btn {
+  background-color: #3a4369;
+  color: white;
+}
+
+.del {
+  background-color: #ad1313;
 }
